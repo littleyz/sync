@@ -15,7 +15,7 @@ jobs:
 
     # Setup Rclone
     - name: Setup Rclone
-      uses: AnimMouse/setup-rclone@v1
+      uses: AnimMouse/setup-rclone@main
       with:
         rclone_config: ${{ secrets.RCLONE_CONFIG }}
 
