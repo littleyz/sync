@@ -23,7 +23,7 @@ jobs:
     # # Sync from Tencent COS
     - name: Rclone Sync 
       run: |
-          rclone copy TencentCOS:${{ secrets.COS_CDN_BUCKET }} ./ --transfers=8 --checkers=16
+          rclone copy TencentCOS:jiangyuorg-1253364689 ./ --transfers=8 --checkers=16
       env:
 
     # Backup in GitHub
