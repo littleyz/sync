@@ -22,7 +22,7 @@ jobs:
     # # Sync from Tencent COS
     - name: Rclone Sync 
       run: |
-          rclone copy TencentCOS:jiangyuorg-1253364689 ./ --transfers=8 --checkers=16
+          rclone copy COS:jiangyuorg-1253364689 ./ --transfers=8 --checkers=16
 
     # Backup in GitHub
     - name: Git Commit
