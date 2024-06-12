@@ -1,0 +1,32 @@
+name: s3 bucket Sync
+on:
+  schedule:
+# 4 times everyday
+  - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+jobs:
+  douban:
+    name: s3 bucket Sync 
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # Setup Rclone
+    - name: Setup Rclone
+      uses: AnimMouse/setup-rclone@v1
+      with:
+        rclone_config: ${{ secrets.RCLONE_CONFIG }}
+
+    # # Sync from Tencent COS
+    - name: Rclone Sync 
+      run: |
+          rclone copy TencentCOS:jiangyuorg-1253364689 ./ --transfers=8 --checkers=16
+
+    # Backup in GitHub
+    - name: Git Commit
+      uses: EndBug/add-and-commit@v9
+      with:
+        message: 'chore: sync from tencent cos'
+        add: './'
