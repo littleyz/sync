@@ -3,7 +3,6 @@ on:
   schedule:
 # 4 times everyday
   - cron: "0 */6 * * *"
-
   workflow_dispatch:
 
 jobs:
@@ -24,7 +23,6 @@ jobs:
     - name: Rclone Sync 
       run: |
           rclone copy TencentCOS:jiangyuorg-1253364689 ./ --transfers=8 --checkers=16
-      env:
 
     # Backup in GitHub
     - name: Git Commit
